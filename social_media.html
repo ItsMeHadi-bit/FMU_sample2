@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Hub - Faisalabad Medical University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <style>
+        /* --- THEME VARIABLES (Updated to Medical Green Theme) --- */
+        :root {
+            /* 1. PRIMARY: Medical Green (Was Red) */
+            --primary-color: #1E6F5C;      
+            
+            /* 2. SECONDARY: Steel Blue (Was Brick) */
+            --secondary-color: #3A7CA5;       
+            
+            /* 3. ACCENT: Soft Sage */
+            --accent-color: #BFD7C1;
+
+            /* 4. TEXT COLORS */
+            --text-dark: #1F2933;
+            --text-light: #ffffff;
+            
+            /* 5. BACKGROUNDS */
+            --light-bg: #F3F6F8;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            
+            /* Social Brand Colors (KEPT SAME) */
+            --whatsapp: #25D366;
+            --facebook: #1877F2;
+            --instagram: #E1306C; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Changed font to Inter */
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .top-bar {
+            background-color: var(--primary-color); /* Green Top Bar */
+            color: var(--text-light);
+            padding: 8px 0;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            padding: 20px 5%;
+            border-bottom: 4px solid var(--secondary-color); /* Blue Border */
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            color: var(--secondary-color); /* Blue Subtitle */
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- HERO SECTION --- */
+        .social-hero {
+            /* CHANGED: Gradient from Red to Green/Blue */
+            background: linear-gradient(rgba(30, 111, 92, 0.9), rgba(58, 124, 165, 0.9));
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 50px;
+        }
+
+        .social-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .social-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* --- SOCIAL GRID --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            flex: 1; 
+        }
+        
+        /* CHANGED: From Grid to Vertical Column */
+        .social-grid {
+            display: flex;             /* Flexible layout */
+            flex-direction: column;    /* Stack items Top-to-Bottom */
+            align-items: center;       /* Center items in the middle of page */
+            gap: 30px;                 /* Space between each card */
+        }
+
+        .social-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .social-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .social-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-dark); /* Dark Gray Text */
+            font-weight: 700;
+        }
+
+        .social-card p {
+            color: #64748b;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .action-btn {
+            margin-top: auto;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background-color: #F1F5F9;
+            color: var(--text-dark);
+            font-weight: 700;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Platform Specific Styling */
+        
+        /* WhatsApp */
+        .card-whatsapp { border-top-color: var(--whatsapp); }
+        .card-whatsapp .icon-wrapper { background-color: var(--whatsapp); }
+        .card-whatsapp:hover .action-btn { background-color: var(--whatsapp); color: white; }
+
+        /* Facebook */
+        .card-facebook { border-top-color: var(--facebook); }
+        .card-facebook .icon-wrapper { background-color: var(--facebook); }
+        .card-facebook:hover .action-btn { background-color: var(--facebook); color: white; }
+
+        /* Instagram */
+        .card-instagram { border-top-color: #E1306C; }
+        .card-instagram .icon-wrapper { 
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        }
+        .card-instagram:hover .action-btn { 
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+            color: white; 
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color); /* Green Footer */
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            border-top: none;
+        }
+
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: var(--secondary-color); /* Blue Link */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--primary-color); }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            Official Social Media Channels
+        </div>
+        <div class="navbar-container">
+            <div class="logo-area">
+                <i class="fas fa-university fa-3x" style="color:var(--primary-color);"></i>
+                <div class="logo-text">
+                    <h1>Faisalabad Medical University</h1>
+                    <p>Connect With Us</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="social-hero">
+        <h2>Stay Connected</h2>
+        <p>Follow our official channels for the latest news, events, and academic updates directly on your favorite platforms.</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Navigation Breadcrumb -->
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Main Website</a>
+
+        <div class="social-grid">
+            
+            <!-- WhatsApp Card -->
+            <a href="https://whatsapp.com/channel/0029VbAdqWKH5JLuY7YOiy1N" target="_blank" class="social-card card-whatsapp">
+                <div class="icon-wrapper">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp Channel</h3>
+                <p>Join our official WhatsApp channel for instant notifications and circulars.</p>
+                <div class="action-btn">Join Channel</div>
+            </a>
+
+            <!-- Facebook Card -->
+            <a href="https://www.facebook.com/FMUFofficial/" target="_blank" class="social-card card-facebook">
+                <div class="icon-wrapper">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <h3>Facebook Page</h3>
+                <p>Like our page for event galleries, official announcements, and community stories.</p>
+                <div class="action-btn">Visit Page</div>
+            </a>
+
+            <!-- Instagram Card -->
+            <a href="https://www.instagram.com/festandgala_fmu" target="_blank" class="social-card card-instagram">
+                <div class="icon-wrapper">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>Follow @festandgala_fmu for student life, festivals, and campus vibes.</p>
+                <div class="action-btn">Follow Us</div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Faisalabad Medical University. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
