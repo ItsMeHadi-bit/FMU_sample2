@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Harassment Cell - Faisalabad Medical University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <style>
+        /* --- THEME VARIABLES (Updated to Medical Green Theme) --- */
+        :root {
+            /* 1. PRIMARY: Medical Green (Was Red) */
+            --primary-color: #1E6F5C;      
+            
+            /* 2. SECONDARY: Steel Blue (Was Brick) */
+            --secondary-color: #3A7CA5;       
+            
+            /* 3. ACCENT: Soft Sage (New addition for backgrounds) */
+            --accent-color: #BFD7C1;
+
+            /* 4. TEXT COLORS (Dark Gray) */
+            --text-dark: #1F2933;
+            --text-light: #ffffff;
+            
+            /* 5. BACKGROUNDS */
+            --light-bg: #F3F6F8;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Changed font to Inter to match main site */
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            /* Changed to Primary Green */
+            background-color: var(--primary-color); 
+            color: var(--text-light);
+            padding: 8px 0;
+            font-size: 0.85rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            /* Changed bottom border to Secondary Blue */
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- PAGE HERO (Background Gradient Changed) --- */
+        .page-hero {
+            /* CHANGED: From Red gradient to Green/Blue gradient */
+            background: linear-gradient(rgba(30, 111, 92, 0.9), rgba(58, 124, 165, 0.8)), url('https://images.unsplash.com/photo-1576091160550-2187d8001b9a?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .page-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2e8f0;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .content-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Main Content Styling */
+        .main-content h3 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .policy-text {
+            margin-bottom: 40px;
+            text-align: justify;
+            color: #4a5568;
+        }
+
+        .member-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .member-card {
+            background: white;
+            /* Border changed to Green */
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .member-card:hover {
+            transform: translateX(5px);
+            /* Hover color changed to very light Sage */
+            background-color: #F0F9F4;
+        }
+
+        .member-info h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .member-info span {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .badge {
+            background-color: var(--secondary-color); /* Blue Badge */
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-top: 5px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            height: fit-content;
+            border-radius: 8px;
+        }
+
+        .sidebar h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .contact-box {
+            margin-bottom: 25px;
+        }
+
+        .contact-box i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-box a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            color: var(--secondary-color);
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: var(--secondary-color); /* Blue Buttons */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 12px;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color); /* Green on hover */
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color); /* Green Footer */
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-container {
+                grid-template-columns: 1fr;
+            }
+            .navbar-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-area {
+                flex-direction: column;
+            }
+            .member-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            Faisalabad Medical University - Official Portal
+        </div>
+        <div class="navbar-container">
+            <div class="logo-area">
+                <!-- Placeholder for Logo -->
+              <img src="logo.jpg" alt="FMU Logo" style="height: 60px; width: auto; object-fit: contain;">
+                <div class="logo-text">
+                    <h1>Faisalabad Medical University</h1>
+                    <p>Anti-Harassment Cell</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h2>Anti-Harassment Cell</h2>
+        <p>Promoting a safe, respectful, and dignified environment for all students and faculty.</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        
+        <!-- Left Column: Member List -->
+        <div class="main-content">
+            <h3>Our Mission</h3>
+            <p class="policy-text">
+                Faisalabad Medical University is committed to providing a safe working and learning environment 
+                free from harassment. The Anti-Harassment Cell is constituted to address grievances and ensure 
+                strict compliance with the "Protection Against Harassment of Women at the Workplace Act 2010" 
+                and HEC guidelines.
+            </p>
+
+            <h3>Committee Members</h3>
+            <ul class="member-list">
+                
+                <!-- Focal Person -->
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Hooria Amir</h4>
+                        <span>Head of Physiology</span>
+                    </div>
+                    <div class="badge">Focal Person</div>
+                </li>
+
+                <!-- Members -->
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Mubin Inam Pall</h4>
+                        <span>Head of Forensic Medicine</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Jamil Abbas</h4>
+                        <span>P.M.O. Physiology</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Aliya Shaima</h4>
+                        <span>Assistant Professor Surgery</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Amna Rehan</h4>
+                        <span>Assistant Professor Radiology</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Sahar Rasool</h4>
+                        <span>Assistant Professor Medicine</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Huma Muzaffar</h4>
+                        <span>Senior Registrar Medicine</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Kishwar Naheed</h4>
+                        <span>Assistant Professor Forensic Medicine</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Akmal Rashid</h4>
+                        <span>DDO / Deputy Registrar</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Sumera Ehsan</h4>
+                        <span>Assistant Professor Medical Education</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+                <li class="member-card">
+                    <div class="member-info">
+                        <h4>Dr. Fozia Jilani</h4>
+                        <span>Demonstrator Physiology</span>
+                    </div>
+                    <div class="badge">Member</div>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <aside class="sidebar">
+            <h4>Quick Contact</h4>
+            <div class="contact-box">
+                <p><i class="fas fa-envelope"></i> <strong>Email Us:</strong></p>
+                <p><a href="mailto:antiharassmentcommitteefmu@gmail.com">antiharassmentcommitteefmu@gmail.com</a></p>
+            </div>
+            
+            <div class="contact-box">
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong></p>
+                <p>Faisalabad Medical University, Sargodha Road, Faisalabad.</p>
+            </div>
+
+            <h4>Resources</h4>
+            <div class="contact-box">
+                <p>Download the official policy documents and complaint forms.</p>
+                <a href="#" class="download-btn"><i class="fas fa-file-pdf"></i> Download HEC Policy</a>
+                <a href="#" class="download-btn"><i class="fas fa-file-alt"></i> Complaint Form</a>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Faisalabad Medical University. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

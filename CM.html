@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Community Medicine - PMC</title>
+    
+    <!-- 1. TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stone: {
+                            50: '#FFFFFF', 100: '#F3F6F8', 200: '#E1E8ED', 600: '#52606D', 800: '#1F2933', 900: '#1F2933',
+                        },
+                        red: {
+                            50: '#F0F9F4', 100: '#E6F2ED', 200: '#BFD7C1', 300: '#BFD7C1', 400: '#3A7CA5',
+                            500: '#3A7CA5', 600: '#3A7CA5', 700: '#2C6185', 800: '#1E6F5C', 900: '#175849', 950: '#1E6F5C',
+                        },
+                        orange: {
+                            100: '#BFD7C1', 200: '#BFD7C1', 400: '#BFD7C1', 500: '#BFD7C1', 600: '#3A7CA5', 700: '#2C6185',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 2. FONTS & ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 3. CUSTOM CSS -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .dropdown-enter { animation: slideDown 0.2s ease-out forwards; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased flex flex-col min-h-screen">
+
+    <!-- ========================= HEADER START ========================= -->
+    
+    <!-- Top Bar -->
+    <div class="bg-red-950 text-red-50 text-xs font-medium py-2 px-6 hidden md:flex justify-between items-center border-b border-red-900">
+        <div class="flex gap-6">
+            <span class="flex items-center gap-2"><i data-lucide="phone" class="w-3 h-3 text-red-300"></i> Teaching Hospital Emergency: 1122</span>
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-red-300"></i> Faisalabad, Punjab</span>
+        </div>
+        <div class="flex gap-6">
+            <a href="/about" class="hover:text-white transition-colors font-bold text-orange-200 hover:text-orange-100">About Us</a>
+            <div class="w-px h-4 bg-red-900"></div>
+            <a href="/careers" class="hover:text-white transition-colors">Careers</a>
+            <a href="/tenders" class="hover:text-white transition-colors">Tenders</a>
+            <a href="/alumni" class="hover:text-white transition-colors">Alumni</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="sticky top-0 z-50 bg-white py-3 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <!-- Logo -->
+             <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+    <img src="logo.jpg" alt="Logo" class="h-12 w-auto object-contain shrink-0">
+    
+    <div class="leading-tight">
+        <div class="font-bold text-lg text-stone-900 tracking-tight group-hover:text-red-800 transition-colors">Punjab Medical College</div>
+        <div class="text-[10px] font-bold text-red-800 uppercase tracking-[0.2em]">Faisalabad</div>
+    </div>
+</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-6 text-sm">
+                <a href="/admissions" class="font-semibold text-stone-600 hover:text-red-700 transition-colors uppercase tracking-wide">Admissions</a>
+                
+                <!-- Programs Dropdown -->
+                <div class="relative group">
+                    <button id="progBtn" class="flex items-center gap-1 font-semibold text-stone-600 hover:text-red-700 uppercase tracking-wide focus:outline-none">
+                        Programs <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div id="progDropdown" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-stone-100 overflow-hidden dropdown-enter">
+                        <div class="py-1 flex flex-col">
+                            <a href="#" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-red-50 hover:text-red-700 transition-colors border-b border-stone-50">Under Graduates</a>
+                            <a href="#" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-red-50 hover:text-red-700 transition-colors">Post Graduates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/faculty" class="font-semibold text-stone-600 hover:text-red-700 transition-colors uppercase tracking-wide">Faculty</a>
+                
+                <!-- Departments Dropdown (Active Context) -->
+                <div class="relative group">
+                    <button id="deptBtn" class="flex items-center gap-1 font-bold text-red-700 uppercase tracking-wide focus:outline-none">
+                        Departments <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div id="deptDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-stone-100 overflow-hidden dropdown-enter">
+                        <div class="py-1 flex flex-col">
+                            <a href="basic_sciences.html" class="px-5 py-2.5 text-sm font-bold text-red-700 bg-red-50 border-b border-stone-50">Basic Sciences</a>
+                            <a href="#" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-red-50 hover:text-red-700 transition-colors border-b border-stone-50">Medicine & Allied</a>
+                            <a href="#" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-red-50 hover:text-red-700 transition-colors border-b border-stone-50">Surgery & Allied</a>
+                            <a href="#" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-red-50 hover:text-red-700 transition-colors">Medical Education</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-5 w-px bg-stone-200 mx-1"></div>
+                
+                <button class="bg-gradient-to-r from-red-700 to-orange-600 hover:from-red-800 hover:to-orange-700 text-white px-5 py-2 rounded-full text-xs font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                    <i data-lucide="user-round" class="w-3 h-3"></i> Portal
+                </button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobileMenuBtn" class="lg:hidden text-stone-900 z-50 p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden fixed inset-0 bg-white z-40 pt-20 px-6 overflow-y-auto">
+            <div class="flex flex-col space-y-4 pb-8">
+                <a href="/" class="text-lg font-semibold text-stone-800 py-3 border-b border-stone-100">Home</a>
+                <a href="basic_sciences.html" class="text-lg font-semibold text-stone-800 py-3 border-b border-stone-100">Departments</a>
+                <button class="bg-red-700 text-white py-3 rounded-lg font-bold shadow-lg text-sm mt-4 w-full">Student Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================= HERO SECTION ========================= -->
+    
+    <div class="relative bg-stone-900 py-20 px-6 border-b border-red-900 overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute inset-0 z-0">
+             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+             <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
+             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-800 text-red-200 text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Basic Sciences
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                Department of <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-200">Community Medicine</span>
+            </h1>
+            <p class="text-lg text-stone-400 max-w-2xl mx-auto leading-relaxed">
+                Dedicated to promoting public health, disease prevention, and community-based medical education.
+            </p>
+        </div>
+    </div>
+
+    <!-- ========================= MAIN CONTENT ========================= -->
+
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-16 w-full relative z-10 space-y-20">
+        
+        <!-- Section 1: Introduction & HOD Message -->
+        <div class="grid md:grid-cols-3 gap-12">
+            <!-- Introduction -->
+            <div class="md:col-span-2 space-y-6">
+                <h2 class="text-3xl font-bold text-stone-900 border-l-4 border-red-600 pl-4">About the Department</h2>
+                <div class="prose text-stone-600 leading-relaxed text-lg">
+                    <p>
+                        The Department of Community Medicine (Public Health) at Punjab Medical College is pivotal in training medical students to understand health and disease from a community perspective. We focus on epidemiology, biostatistics, primary healthcare, and preventive medicine.
+                    </p>
+                    <p class="mt-4">
+                        Our curriculum emphasizes field visits, household surveys, and research to equip future doctors with the skills needed to address public health challenges effectively. We bridge the gap between clinical medicine and community health needs.
+                    </p>
+                </div>
+                
+                <!-- Key Features Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm flex items-start gap-3 hover:border-red-300 transition-colors">
+                        <div class="bg-red-50 p-2 rounded-lg text-red-700"><i data-lucide="globe" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Epidemiology</h4>
+                            <p class="text-xs text-stone-500 mt-1">Study of disease patterns.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm flex items-start gap-3 hover:border-red-300 transition-colors">
+                        <div class="bg-red-50 p-2 rounded-lg text-red-700"><i data-lucide="bar-chart-2" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Biostatistics</h4>
+                            <p class="text-xs text-stone-500 mt-1">Data analysis in health.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm flex items-start gap-3 hover:border-red-300 transition-colors">
+                        <div class="bg-red-50 p-2 rounded-lg text-red-700"><i data-lucide="home" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Field Visits</h4>
+                            <p class="text-xs text-stone-500 mt-1">Community outreach programs.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm flex items-start gap-3 hover:border-red-300 transition-colors">
+                        <div class="bg-red-50 p-2 rounded-lg text-red-700"><i data-lucide="heart" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Primary Health Care</h4>
+                            <p class="text-xs text-stone-500 mt-1">Health for all.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOD Message Card -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-2xl shadow-xl border border-stone-100 overflow-hidden relative group">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-red-700"></div>
+                    <div class="p-8 text-center relative z-10">
+                        <div class="w-32 h-32 mx-auto bg-stone-200 rounded-full mb-6 border-4 border-white shadow-lg flex items-center justify-center overflow-hidden">
+                            <i data-lucide="user" class="w-16 h-16 text-stone-400"></i>
+                            <!-- <img src="hod_community_med.jpg" alt="HOD" class="w-full h-full object-cover"> -->
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900">Prof. Dr. [HOD Name]</h3>
+                        <p class="text-red-600 text-sm font-semibold uppercase tracking-wider mb-6">Head of Department</p>
+                        <i data-lucide="quote" class="w-8 h-8 text-stone-200 mx-auto mb-2"></i>
+                        <p class="text-stone-500 italic text-sm leading-relaxed mb-6">
+                            "Prevention is better than cure. Our goal is to empower communities and future physicians to build a healthier society through education and proactive care."
+                        </p>
+                    </div>
+                    <!-- Decorative Background -->
+                    <div class="absolute bottom-0 right-0 opacity-5 pointer-events-none">
+                        <i data-lucide="users" class="w-40 h-40 text-red-900"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Faculty -->
+        <div>
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 border-l-4 border-orange-500 pl-4">Faculty Members</h2>
+                <a href="#" class="text-red-700 font-bold text-sm hover:underline flex items-center gap-1">View Full List <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Faculty Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 mx-auto bg-stone-100 rounded-full mb-4 flex items-center justify-center">
+                        <i data-lucide="user" class="w-10 h-10 text-stone-400"></i>
+                    </div>
+                    <h3 class="font-bold text-stone-900">Dr. [Name Here]</h3>
+                    <p class="text-xs text-red-600 font-semibold uppercase mt-1">Associate Professor</p>
+                    <p class="text-xs text-stone-500 mt-2">MBBS, MPH</p>
+                </div>
+                <!-- Faculty Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 mx-auto bg-stone-100 rounded-full mb-4 flex items-center justify-center">
+                        <i data-lucide="user" class="w-10 h-10 text-stone-400"></i>
+                    </div>
+                    <h3 class="font-bold text-stone-900">Dr. [Name Here]</h3>
+                    <p class="text-xs text-red-600 font-semibold uppercase mt-1">Assistant Professor</p>
+                    <p class="text-xs text-stone-500 mt-2">MBBS, FCPS</p>
+                </div>
+                <!-- Faculty Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 mx-auto bg-stone-100 rounded-full mb-4 flex items-center justify-center">
+                        <i data-lucide="user" class="w-10 h-10 text-stone-400"></i>
+                    </div>
+                    <h3 class="font-bold text-stone-900">Dr. [Name Here]</h3>
+                    <p class="text-xs text-red-600 font-semibold uppercase mt-1">Assistant Professor</p>
+                    <p class="text-xs text-stone-500 mt-2">MBBS, MPH</p>
+                </div>
+                <!-- Faculty Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-stone-200 hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 mx-auto bg-stone-100 rounded-full mb-4 flex items-center justify-center">
+                        <i data-lucide="user" class="w-10 h-10 text-stone-400"></i>
+                    </div>
+                    <h3 class="font-bold text-stone-900">Dr. [Name Here]</h3>
+                    <p class="text-xs text-red-600 font-semibold uppercase mt-1">Demonstrator</p>
+                    <p class="text-xs text-stone-500 mt-2">MBBS</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Facilities Highlight -->
+        <div class="bg-stone-100 rounded-3xl p-8 md:p-12">
+            <h2 class="text-2xl font-bold text-stone-900 mb-8 text-center">Departmental Facilities & Activities</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                     <!-- Placeholder for Image (User will upload) -->
+                    <div class="w-full h-48 bg-stone-200 rounded-xl shadow-md flex items-center justify-center group overflow-hidden">
+                        <i data-lucide="image" class="w-12 h-12 text-stone-400"></i>
+                        <!-- <img src="community_museum.jpg" class="w-full h-full object-cover"> -->
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-900">Community Medicine Museum</h3>
+                    <p class="text-sm text-stone-600">Displays models of sanitation systems, water purification, and disease vectors.</p>
+                </div>
+                <div class="space-y-4">
+                     <!-- Placeholder for Image (User will upload) -->
+                    <div class="w-full h-48 bg-stone-200 rounded-xl shadow-md flex items-center justify-center group overflow-hidden">
+                        <i data-lucide="image" class="w-12 h-12 text-stone-400"></i>
+                        <!-- <img src="demonstration_room.jpg" class="w-full h-full object-cover"> -->
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-900">Demonstration Room</h3>
+                    <p class="text-sm text-stone-600">Equipped for interactive teaching, small group discussions, and presentations.</p>
+                </div>
+                <div class="space-y-4">
+                     <!-- Placeholder for Image (User will upload) -->
+                    <div class="w-full h-48 bg-stone-200 rounded-xl shadow-md flex items-center justify-center group overflow-hidden">
+                        <i data-lucide="image" class="w-12 h-12 text-stone-400"></i>
+                        <!-- <img src="field_visits.jpg" class="w-full h-full object-cover"> -->
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-900">Field Visits</h3>
+                    <p class="text-sm text-stone-600">Regular visits to BHUs, RHCs, and water filtration plants for practical learning.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========================= FOOTER ========================= -->
+    
+    <footer class="bg-red-950 text-stone-400 pt-16 pb-8 border-t border-red-900">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-12">
+            <div class="space-y-6">
+                <div class="flex items-center space-x-2 text-white">
+                    <div class="bg-red-900 p-1.5 rounded-lg">
+                        <i data-lucide="heart-pulse" class="w-5 h-5 text-red-500"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">PMC</span>
+                </div>
+                <p class="text-sm leading-relaxed text-stone-400">
+                    Punjab Medical College, Faisalabad.<br/>
+                    A distinguished public sector medical institution.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Academics</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-red-400 transition-colors">MBBS Curriculum</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">BDS Curriculum</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Postgraduate</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Resources</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Student Portal</a></li>
+                    <li><a href="#" class="hover:text-red-400 transition-colors">Digital Library</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contact</h4>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-red-600 mt-1"></i> Faisalabad, Pakistan</li>
+                    <li class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-red-600"></i> +92 41 9210080</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 border-t border-red-900 pt-8 flex flex-col md:flex-row justify-between text-xs text-stone-500">
+            <p>© 2025 Punjab Medical College. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- STUDENT PORTAL MODAL -->
+    <div id="loginModal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-stone-900/75 backdrop-blur-sm transition-opacity opacity-0 modal-backdrop"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md scale-95 opacity-0 modal-panel">
+                    <div class="bg-red-950 px-4 py-6 sm:px-6 relative">
+                        <div class="absolute inset-0 bg-red-900/50"></div>
+                        <div class="relative z-10 flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Student Portal</h3>
+                            <button id="closeModalBtn" class="text-red-200 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+                        </div>
+                    </div>
+                    <div class="px-4 py-6 sm:p-6">
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-stone-900">Registration Number</label>
+                                <input type="text" class="block w-full rounded-md border-0 py-2 text-stone-900 ring-1 ring-inset ring-stone-300 focus:ring-2 focus:ring-red-600 sm:text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-900">Password</label>
+                                <input type="password" class="block w-full rounded-md border-0 py-2 text-stone-900 ring-1 ring-inset ring-stone-300 focus:ring-2 focus:ring-red-600 sm:text-sm">
+                            </div>
+                            <button type="button" class="w-full rounded-lg bg-red-700 px-3 py-2.5 text-sm font-bold text-white hover:bg-red-600">Secure Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            lucide.createIcons();
+        });
+
+        // Dropdowns
+        const setupDropdown = (btnId, dropId) => {
+            const btn = document.getElementById(btnId);
+            const drop = document.getElementById(dropId);
+            if(btn && drop) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    drop.classList.toggle('hidden');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!btn.contains(e.target) && !drop.contains(e.target)) {
+                        drop.classList.add('hidden');
+                    }
+                });
+            }
+        };
+        setupDropdown('progBtn', 'progDropdown');
+        setupDropdown('deptBtn', 'deptDropdown');
+
+        // Modal Logic
+        const modal = document.getElementById('loginModal');
+        const backdrop = modal.querySelector('.modal-backdrop');
+        const panel = modal.querySelector('.modal-panel');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const openButtons = document.querySelectorAll("button"); 
+
+        openButtons.forEach(btn => {
+            if(btn.textContent.includes('Portal') || btn.textContent.includes('Login')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        backdrop.classList.remove('opacity-0');
+                        panel.classList.remove('scale-95', 'opacity-0');
+                        panel.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                });
+            }
+        });
+
+        const closeModal = () => {
+            backdrop.classList.add('opacity-0');
+            panel.classList.remove('scale-100', 'opacity-100');
+            panel.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+
+        if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    </script>
+</body>
+</html>
